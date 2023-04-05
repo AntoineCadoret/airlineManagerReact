@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/molecules/Header/Header";
 import Navigation from "../components/molecules/Navigation/Navigation";
-import ModalAirline from "../components/organismes/ModalAirline/ModalAirline";
 
 function Layout() {
     

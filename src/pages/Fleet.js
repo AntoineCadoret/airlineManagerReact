@@ -8,7 +8,6 @@ const Fleet = () =>{
     ];
     return(
         <div className="">
-            <h2>Fleet</h2>
             <div>
                 {planes.map(plane => <PlaneTicket plane={plane}/>)}
             </div>
