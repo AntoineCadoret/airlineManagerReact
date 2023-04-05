@@ -1,6 +1,7 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialAirlineName = {airlineName:"Test Airline"};
+const initialFleet = {fleet:[]};
 
 const airlineNameSlice = createSlice({
     name: 'airlineName',

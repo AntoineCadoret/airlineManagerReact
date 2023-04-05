@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import classes from "./ModalAirline.module.css";
-import close from "../../../assets/icons/close.png";
-import { airlineNameAction } from "../../../store/store";
+import classes from "../Modal.module.css";
+import close from "../../../../assets/icons/close.png";
+import { airlineNameAction } from "../../../../store/store";
 
 const ModalAirline = ({ airlineName, closeHandler }, props) => {
     const name = useSelector(state => state.airlineName.airlineName);

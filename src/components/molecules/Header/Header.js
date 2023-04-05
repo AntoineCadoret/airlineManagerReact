@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import settings from "../../../assets/icons/settings.svg";
-import ModalAirline from "../../organismes/ModalAirline/ModalAirline";
+import ModalAirline from "../../organismes/Modals/ModalAirline/ModalAirline";
 
 function Header({title},props) {
     const [isAdding, setIsAdding] = useState(false);
@@ -19,7 +19,6 @@ function Header({title},props) {
     return (
         <>
             {isAdding && <ModalAirline
-                airlineName="test airline"
                 closeHandler={closeModalHandler}
             />}
             <header className="flex justify-between bg-sky-100">
