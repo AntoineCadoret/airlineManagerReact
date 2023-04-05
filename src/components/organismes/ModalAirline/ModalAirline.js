@@ -1,8 +1,18 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import classes from "./ModalAirline.module.css";
 import close from "../../../assets/icons/close.png";
+import { airlineNameAction } from "../../../store/store";
 
 const ModalAirline = ({ airlineName, closeHandler }, props) => {
+    const name = useSelector(state => state.airlineName.airlineName);
+    const dispatch = useDispatch();
+    const modifNameHandler = () => {
+        const newName = document.querySelector(".airlineName").value;
+        dispatch(airlineNameAction.updateAirlineName(newName));
+        closeHandler();
+    };
+
     return (
         <>
             <div className={classes.backdrop} onClick={closeHandler} />
@@ -20,35 +30,12 @@ const ModalAirline = ({ airlineName, closeHandler }, props) => {
                             type="text"
                             name="airlineName"
                             className="airlineName border rounded m-2"
-                            defaultValue={  airlineName }
+                            defaultValue={  name }
                         />
                     </label>
                 </div>
                 <footer className="flex justify-center">
-                   {/* <Button
-                        value={(modifType === "update") ? 'Update' : 'Add'}
-                        clickHandle={updateHandle}
-                        buttonStyle="w-2/5
-                        bg-sky-500
-                        rounded
-                        m-3
-                        p-2
-                        text-white
-                        self-right
-                        hover:bg-sky-700"
-                    />
-                    {(modifType === "update") ? <Button
-                        value='remove'
-                        clickHandle={removeHandle}
-                        buttonStyle=" w-2/5
-                        bg-red-500
-                        rounded
-                        m-3
-                        p-2
-                        text-white
-                        self-left
-                        hover:bg-red-700"
-                    /> :''} */}
+                   <button className="bg-sky-500 rounded text-white p-2 m-2" onClick={modifNameHandler}>Save</button>
                 </footer>
             </div>
         </>
