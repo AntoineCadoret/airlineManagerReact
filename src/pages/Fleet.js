@@ -23,7 +23,7 @@ const Fleet = () =>{
             {isAdding && <ModalFleet
                 closeHandler={closeModalHandler}
             />}
-            <div>
+            <div className="mx-6 my-4">
                 {planes.map(plane => <PlaneTicket plane={plane}/>)}
                 <img className="fixed m-3 bottom-0 right-0 w-24 cursor-pointer" src={plus} alt="add" onClick={addModalHandler}/>
             </div>
