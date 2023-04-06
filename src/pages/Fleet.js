@@ -9,7 +9,8 @@ const Fleet = () =>{
     const [isAdding, setIsAdding] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
     const fleet = useSelector(state => state.fleet.fleet);
-    const styleToAdd = useOutletContext()
+    const styleToAdd = useOutletContext();
+    const [planeIdToModify, setPlaneIdToModify] = useState();
 
     const addModalHandler = () => {
         setIsAdding(true);  
@@ -17,17 +18,19 @@ const Fleet = () =>{
     
     const closeModalHandler = () => {
         setIsAdding(false);
+        setIsUpdating(false);
     };
     const updatePlane = (id) => {
-        console.log(id);
+        setIsAdding(true);
+        setIsUpdating(true);
+        setPlaneIdToModify(id);
     };
-
-    console.log('fleet', styleToAdd);
-
     return(
         <>
             {isAdding && <ModalFleet
                 closeHandler={closeModalHandler}
+                mode={isUpdating ? planeIdToModify:'add'}
+
             />}
             <div style={styleToAdd} className="mx-6 my-4">
                 {fleet.map(plane => <PlaneTicket plane={plane} updatePlaneHandler={updatePlane} />)}

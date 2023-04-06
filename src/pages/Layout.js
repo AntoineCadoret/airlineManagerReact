@@ -4,10 +4,10 @@ import Header from "../components/molecules/Header/Header";
 import Navigation from "../components/molecules/Navigation/Navigation";
 
 function Layout() {
-    const [style, setStyle] = useState({padding:"5% 8.333333%"});
+    const [style, setStyle] = useState({padding:"5rem 5rem"});
 
     const handleSize = (navSize) => {
-        const newStyle = {padding: "6% "+navSize};
+        const newStyle = {padding: "5rem "+navSize};
         setStyle(newStyle);
     };
     return (

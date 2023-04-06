@@ -19,23 +19,23 @@ const  Navigation = ({ handleSize }, props) => {
         return style;
     };
     const openMenu = () =>{
-        setIsOpen(!isOpen);
         if(!isOpen){
-            handleSize('20%');
+            handleSize('10rem');
         } else {
-            handleSize('8.333333%');
+            handleSize('5rem');
         }
+        setIsOpen(!isOpen);
         
     };
 
     return(
-        <nav className={isOpen ? 'fixed flex flex-col bg-sky-100 w-1/5 h-full':'fixed flex flex-col bg-sky-100 w-1/12 h-full'}>
-            <button onClick={openMenu} style={{ height: '96px' }}><img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={isOpen? close : menu } alt="close menu"/></button>
+        <nav className={isOpen ? 'fixed flex flex-col bg-sky-100 w-40 h-full':'fixed flex flex-col bg-sky-100 w-20 h-full'}>
+            <button onClick={openMenu} style={{ height: '96px' }}><img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-6"} src={isOpen? close : menu } alt="close menu"/></button>
             <NavLink
                 className={({isActive})=>styleLink(isActive)}
                 to="/"
                 end>
-                <img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={home} alt="home menu"/>
+                <img className={isOpen ? "mx-2 my-2 w-6": "mx-2 my-2 w-6"} src={home} alt="home menu"/>
                 {isOpen?'Home':''}
             </NavLink>
             <NavLink
@@ -43,7 +43,7 @@ const  Navigation = ({ handleSize }, props) => {
                 to="/Fleet"
                 end
             >
-                <img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={plane} alt="plane menu"/>
+                <img className={isOpen ? "mx-2 my-2 w-6": "mx-2 my-2 w-6"} src={plane} alt="plane menu"/>
                 {isOpen?'Fleet':''}
             </NavLink>
             <NavLink
@@ -51,7 +51,7 @@ const  Navigation = ({ handleSize }, props) => {
                 to="/Destinations"
                 end
             >
-                <img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={route} alt="route menu"/>
+                <img className={isOpen ? "mx-2 my-2 w-6": "mx-2 my-2 w-6"} src={route} alt="route menu"/>
                 {isOpen?'Destinations':''}
             </NavLink>
             <NavLink
@@ -59,7 +59,7 @@ const  Navigation = ({ handleSize }, props) => {
                 to="/Schedule"
                 end
             >
-                <img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={schedule} alt="schedule menu"/>
+                <img className={isOpen ? "mx-2 my-2 w-6": "mx-2 my-2 w-6"} src={schedule} alt="schedule menu"/>
                 {isOpen?'Schedule':''}
             </NavLink>
         </nav>
