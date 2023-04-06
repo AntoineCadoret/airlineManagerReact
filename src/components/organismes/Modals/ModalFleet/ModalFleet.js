@@ -2,16 +2,29 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import classes from "../Modal.module.css";
 import close from "../../../../assets/icons/close.png";
-import { airlineNameAction } from "../../../../store/store";
+import { fleetAction } from "../../../../store/store";
 
 const ModalFleet = ({ closeHandler }, props) => {
     const [types, setTypes] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
-    const name = useSelector(state => state.airlineName.airlineName);
+    const fleet = useSelector(state => state.fleet.fleet);
     const dispatch = useDispatch();
-    const modifNameHandler = () => {
-        const newName = document.querySelector(".airlineName").value;
-        dispatch(airlineNameAction.updateAirlineName(newName));
+    const modifFleetHandler = () => {
+        const model = document.querySelector(".airplaneModel").value;
+        const type = document.querySelector(".airplaneType").value;
+        const fleetAmount = document.querySelector(".fleetAmount").value;
+        const orderAmount = document.querySelector(".orderAmount").value;
+        const fleetId = fleet.length;
+
+        const arrNewPlane = {
+            id: fleetId,
+            model: model,
+            type: type,
+            fleetAmount: fleetAmount,
+            orderAmount: orderAmount,
+            totalAmount: totalAmount
+        };
+        dispatch(fleetAction.addAirplane(arrNewPlane));
         closeHandler();
     };
     const modifAirplaneType = () => {
@@ -82,7 +95,7 @@ const ModalFleet = ({ closeHandler }, props) => {
                         </select>
                     </label>
                     <label className="my-2">
-                        Quantity in your fleet:
+                        Amount in your fleet:
                         <input
                             type="text"
                             name="fleetAmount"
@@ -92,7 +105,7 @@ const ModalFleet = ({ closeHandler }, props) => {
                         />
                     </label>
                     <label className="my-2">
-                        Quantity in order:
+                        Amount in order:
                         <input
                             type="text"
                             name="orderAmount"
@@ -106,7 +119,7 @@ const ModalFleet = ({ closeHandler }, props) => {
                     </p>
                 </div>
                 <footer className="flex justify-center">
-                   <button className="bg-sky-500 rounded text-white p-2 m-2" onClick={modifNameHandler}>Save</button>
+                   <button className="bg-sky-500 rounded text-white p-2 m-2" onClick={modifFleetHandler}>Save</button>
                 </footer>
             </div>
         </>
