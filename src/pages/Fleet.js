@@ -6,6 +6,7 @@ import ModalFleet from "../components/organismes/Modals/ModalFleet/ModalFleet";
 
 const Fleet = () =>{
     const [isAdding, setIsAdding] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
     const fleet = useSelector(state => state.fleet.fleet);
 
     const addModalHandler = () => {
@@ -15,14 +16,17 @@ const Fleet = () =>{
     const closeModalHandler = () => {
         setIsAdding(false);
     };
-    
+    const updatePlane = (id) => {
+        console.log(id);
+    };
+
     return(
         <>
             {isAdding && <ModalFleet
                 closeHandler={closeModalHandler}
             />}
             <div className="mx-6 my-4">
-                {fleet.map(plane => <PlaneTicket plane={plane} updatePlaneHandler={updatePlane(id)} />)}
+                {fleet.map(plane => <PlaneTicket plane={plane} updatePlaneHandler={updatePlane} />)}
                 <img className="fixed m-3 bottom-0 right-0 w-24 cursor-pointer" src={plus} alt="add" onClick={addModalHandler}/>
             </div>
         </>

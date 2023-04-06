@@ -35,11 +35,14 @@ const PlaneTicket = ({plane, updatePlaneHandler}, props) =>{
             break;
 
     }
+    const updateHandler = () => {
+        updatePlaneHandler(plane.id);
+    };
     return (
         <div className="flex">
             <img className="w-1/6 m-2 rounded" src={planePick} alt="plane picture"/>
             <h2 className="flex items-center">{plane.model}</h2>
-            <button onClick={updatePlaneHandler(plane.id)}><img className="m-3 float-right cursor-pointer" src={settings} alt="plane settings"/></button>
+            <button onClick={updateHandler}><img className="m-3 float-right cursor-pointer" src={settings} alt="plane settings"/></button>
         </div>
     );
 
