@@ -21,7 +21,7 @@ function Header() {
             {isAdding && <ModalAirline
                 closeHandler={closeModalHandler}
             />}
-            <header className="flex justify-between bg-sky-100">
+            <header className="fixed flex justify-between bg-sky-100 w-full">
                 <div className="text-center w-full">
                     <h1 className="text-3xl text-sky-500 font-bold">Airline Manager</h1>
                     <h2 className="text-2xl">{name}</h2>

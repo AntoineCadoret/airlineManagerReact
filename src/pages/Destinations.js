@@ -1,7 +1,7 @@
-const Destinations = () =>{
+const Destinations = ({ styleToAdd }) =>{
     return(
-        <div>
-            
+        <div style={styleToAdd}>
+
         </div>
     );
 };

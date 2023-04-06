@@ -1,6 +1,6 @@
-const Schedule= () =>{
+const Schedule= ({styleToAdd}) =>{
     return(
-        <div>
+        <div style={styleToAdd}>
 
         </div>
     );

@@ -7,7 +7,7 @@ import route from "../../../assets/icons/flight-route.png";
 import schedule from "../../../assets/icons/schedule.png";
 import menu from "../../../assets/icons/menu.png";
 
-function Navigation() {
+const  Navigation = ({ handleSize }, props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const styleLink = (actif) => {
@@ -18,10 +18,19 @@ function Navigation() {
         }
         return style;
     };
+    const openMenu = () =>{
+        setIsOpen(!isOpen);
+        if(!isOpen){
+            handleSize('20%');
+        } else {
+            handleSize('8.333333%');
+        }
+        
+    };
 
     return(
-        <nav className={isOpen ? 'flex flex-col bg-sky-100 w-1/5 h-screen':'flex flex-col bg-sky-100 w-1/12 h-screen'}>
-            <button onClick={()=>setIsOpen(!isOpen)} style={{ height: '96px' }}><img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={isOpen? close : menu } alt="close menu"/></button>
+        <nav className={isOpen ? 'fixed flex flex-col bg-sky-100 w-1/5 h-full':'fixed flex flex-col bg-sky-100 w-1/12 h-full'}>
+            <button onClick={openMenu} style={{ height: '96px' }}><img className={isOpen ? "mx-2 my-2 w-1/5": "mx-2 my-2 w-1/2"} src={isOpen? close : menu } alt="close menu"/></button>
             <NavLink
                 className={({isActive})=>styleLink(isActive)}
                 to="/"
@@ -55,6 +64,6 @@ function Navigation() {
             </NavLink>
         </nav>
     );
-}
+};
 
 export default Navigation;
