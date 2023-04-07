@@ -21,10 +21,10 @@ const fleetSlice = createSlice({
         },
         updateAirplane: (state, action) => {
             const index = action.payload.index;
-            state.fleet[index] = action.payload.newTask;
+            state.fleet[index] = action.payload.newAirplane;
         },
         removeAirplane: (state, action) => {
-            const index = state.fleet.indexOf(action.payload.index);
+            const index = state.fleet.indexOf(action.payload);
             state.fleet.splice(index, 1);
         }
     }

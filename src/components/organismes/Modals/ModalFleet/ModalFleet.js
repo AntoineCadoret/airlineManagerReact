@@ -34,7 +34,13 @@ const ModalFleet = ({ closeHandler, mode }, props) => {
         const type = document.querySelector(".airplaneType").value;
         const fleetAmount = document.querySelector(".fleetAmount").value;
         const orderAmount = document.querySelector(".orderAmount").value;
-        const fleetId = fleet.length;
+        let fleetId = 0;
+        
+        if(mode ==='add'){
+           fleetId = fleet.length;
+        } else {
+            fleetId = mode;
+        }
 
         const arrNewPlane = {
             id: fleetId,
@@ -44,8 +50,24 @@ const ModalFleet = ({ closeHandler, mode }, props) => {
             orderAmount: orderAmount,
             totalAmount: totalAmount
         };
-        dispatch(fleetAction.addAirplane(arrNewPlane));
-        closeHandler();
+        if(mode === 'add'){
+            dispatch(fleetAction.addAirplane(arrNewPlane));
+            closeHandler();
+        } else {
+            if(window.confirm("Are you sure to update your "+airplane.model+"-"+airplane.type+" airplane model")){
+                dispatch(fleetAction.updateAirplane({index: mode, newAirplane: arrNewPlane}));
+                closeHandler();
+            }
+        }
+        
+        
+    };
+    const removeAirplane = () => {
+        if(window.confirm("Are you sure you want to remove your "+airplane.model+"-"+airplane.type+" airplane model")){
+            dispatch(fleetAction.removeAirplane(mode));
+            closeHandler();
+        }
+
     };
     
     const adjustTotalAmount = () => {
@@ -114,6 +136,7 @@ const ModalFleet = ({ closeHandler, mode }, props) => {
                 </div>
                 <footer className="flex justify-center">
                    <button className="bg-sky-500 rounded text-white p-2 m-2" onClick={addAirplane}>Save</button>
+                   {mode !== "add" ?  <button className="bg-red-500 rounded text-white p-2 m-2" onClick={removeAirplane}>Remove</button>:''}
                 </footer>
             </div>
         </>
